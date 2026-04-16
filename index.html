@@ -8,32 +8,26 @@
 </head>
 <body class="bg-gray-100">
 
-  <div class="max-w-md mx-auto bg-white min-h-screen pb-6">
+  <div class="max-w-md mx-auto bg-white min-h-screen pb-6 space-y-3 px-2">
 
     <!-- IMAGE -->
     <img
       src="images/proimg-v001.png"
-      class="w-full h-auto object-cover"
+      class="w-full h-auto object-cover rounded-lg"
       alt="โปรโมชั่น"
     />
-     <img
+    <img
       src="images/proimg-v002.jpg"
-      class="w-full h-auto object-cover"
-      alt="ก็มาดิครับ"
-    />
-     <img
-      src="images/proimg-v001.png"
-      class="w-full h-auto object-cover"
+      class="w-full h-auto object-cover rounded-lg"
       alt="โปรโมชั่น"
     />
-  
 
     <!-- YOUTUBE -->
-    <div class="mt-4 px-2" id="ytContainer">
-      <div class="relative w-full" style="padding-top: 56.25%;">
+    <div id="ytContainer">
+      <div class="relative w-full rounded-lg overflow-hidden" style="padding-top: 56.25%;">
         <iframe
           id="ytPlayer"
-          class="absolute top-0 left-0 w-full h-full rounded-xl"
+          class="absolute top-0 left-0 w-full h-full"
           src=""
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -45,19 +39,16 @@
   </div>
 
   <script>
-    // 🔥 ใส่ลิงก์ YouTube ปกติได้เลย
     const YT_URL = "https://www.youtube.com/watch?v=Yqj8d7_skPA";
 
     function extractVideoId(url) {
       try {
         const u = new URL(url);
 
-        // youtube.com/watch?v=
         if (u.hostname.includes("youtube.com")) {
           return u.searchParams.get("v");
         }
 
-        // youtu.be/xxxx
         if (u.hostname.includes("youtu.be")) {
           return u.pathname.replace("/", "");
         }
@@ -74,7 +65,6 @@
       const embed = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
       document.getElementById("ytPlayer").src = embed;
     } else {
-      // ❌ ถ้า link ไม่ถูก → ซ่อน video
       document.getElementById("ytContainer").style.display = "none";
     }
   </script>
